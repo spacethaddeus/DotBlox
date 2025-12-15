@@ -1,0 +1,94 @@
+[gd_scene load_steps=4 format=3 uid="uid://6thkjjeh8gbm"]
+
+[ext_resource type="Theme" uid="uid://dsd5yy10efc25" path="res://ROBLOX.tres" id="1_787es"]
+[ext_resource type="Script" uid="uid://c3jae1n5muyvi" path="res://Scripts/ClientUI.cs" id="2_enso3"]
+
+[sub_resource type="Theme" id="Theme_enso3"]
+
+[node name="ClientUI" type="Control" node_paths=PackedStringArray("HelpButton", "ToolsButton", "InsertButton", "FullscreenButton", "ExitButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_787es")
+script = ExtResource("2_enso3")
+HelpButton = NodePath("HelpButton")
+ToolsButton = NodePath("ToolsButton")
+InsertButton = NodePath("InsertButton")
+FullscreenButton = NodePath("FullscreenButton")
+ExitButton = NodePath("ExitButton")
+
+[node name="HelpButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 357.0
+offset_right = 476.0
+offset_bottom = 31.0
+theme = SubResource("Theme_enso3")
+text = "  Help..."
+alignment = 0
+
+[node name="ToolsButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 119.0
+offset_bottom = 31.0
+theme = SubResource("Theme_enso3")
+disabled = true
+text = "  Tools"
+alignment = 0
+
+[node name="InsertButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 119.0
+offset_right = 238.0
+offset_bottom = 31.0
+theme = SubResource("Theme_enso3")
+disabled = true
+text = "  Insert"
+alignment = 0
+
+[node name="FullscreenButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 238.0
+offset_right = 357.0
+offset_bottom = 31.0
+theme = SubResource("Theme_enso3")
+text = "  Fullscreen"
+alignment = 0
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 476.0
+offset_right = 579.0
+offset_bottom = 31.0
+theme = SubResource("Theme_enso3")
+text = "   Exit"
+alignment = 0
+
+[node name="PlayerList" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -231.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 69.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerList"]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 252.0
+offset_bottom = 100.0
+theme = ExtResource("1_787es")
+
+[node name="Title" type="Label" parent="PlayerList/VBoxContainer"]
+layout_mode = 2
+text = "Player List"
+
+[node name="1" type="Label" parent="PlayerList/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.84313726, 0.77254903, 0.6039216, 1)
+text = "Tad"

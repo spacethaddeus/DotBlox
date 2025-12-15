@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cdm0e0vbab3a7"
+path="res://.godot/imported/Rocket shot.wav-14e7439581891b04878acf363af6f70c.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Rocket shot.wav"
+dest_files=["res://.godot/imported/Rocket shot.wav-14e7439581891b04878acf363af6f70c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

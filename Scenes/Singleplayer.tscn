@@ -1,0 +1,36 @@
+[gd_scene load_steps=10 format=3 uid="uid://c21ii6b5u0wu8"]
+
+[ext_resource type="Script" uid="uid://bw77l2lgd64ao" path="res://Scripts/MapLoader.cs" id="1_poaoe"]
+[ext_resource type="PackedScene" uid="uid://6thkjjeh8gbm" path="res://Assets/Prefabs/ClientUI.tscn" id="1_xq4sb"]
+[ext_resource type="PackedScene" uid="uid://du4x8egh7c4l5" path="res://Assets/Prefabs/Instances/Part/PartUnanchored.tscn" id="2_0ev53"]
+[ext_resource type="PackedScene" uid="uid://b664x70gkbfl0" path="res://Assets/Prefabs/Instances/Part/PartAnchored.tscn" id="3_o4en4"]
+[ext_resource type="Texture2D" uid="uid://cev17jaw2q5pa" path="res://Assets/Sky/panorama_image.png" id="3_q55al"]
+[ext_resource type="PackedScene" uid="uid://d3k1qpr62clmb" path="res://Assets/Prefabs/Player.tscn" id="5_q55al"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_o4en4"]
+panorama = ExtResource("3_q55al")
+
+[sub_resource type="Sky" id="Sky_q55al"]
+sky_material = SubResource("PanoramaSkyMaterial_o4en4")
+
+[sub_resource type="Environment" id="Environment_o4en4"]
+background_mode = 2
+sky = SubResource("Sky_q55al")
+tonemap_mode = 2
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_poaoe")
+PartInstanceUnanchored = ExtResource("2_0ev53")
+PartInstanceAnchored = ExtResource("3_o4en4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_o4en4")
+
+[node name="ClientUI" parent="." instance=ExtResource("1_xq4sb")]
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("5_q55al")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.145522, 0)
