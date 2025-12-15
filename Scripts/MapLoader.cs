@@ -62,7 +62,7 @@ public partial class MapLoader : Node3D
 					}
 
 					PartPrefab.Name = part.Name;
-					PartPrefab.Position = new(part.CFrame.Position.X * 0.05F, part.CFrame.Position.Y * 0.05F, part.CFrame.Position.Z * 0.05F);
+					PartPrefab.Position = new(part.CFrame.Position.X * 0.28F, part.CFrame.Position.Y * 0.28F, part.CFrame.Position.Z * 0.28F);
 
 					MeshInstance3D meshInstance = (MeshInstance3D)PartPrefab.GetNode("MeshInstance3D");
 					CollisionShape3D collisionObject3D = (CollisionShape3D)PartPrefab.GetNode("CollisionShape3D");
@@ -71,30 +71,21 @@ public partial class MapLoader : Node3D
                     {
                         AlbedoColor = new(part.BrickColor.R, part.BrickColor.G, part.BrickColor.B)
                     };
-
-                    BoxMesh mesh = new();
-					mesh = new()
+					BoxMesh mesh = new()
 					{
-						Size = new(part.Size.X * 0.05F, part.Size.Y * 0.05F, part.Size.Z * 0.05F),
+						Size = new(part.Size.X * 0.28F, part.Size.Y * 0.28F, part.Size.Z * 0.28F),
 						Material = material
 					};
-
+					meshInstance.Mesh = mesh;
                     BoxShape3D boxShape3D = new()
                     {
-                        Size = new(part.Size.X * 0.05F, part.Size.Y * 0.05F, part.Size.Z * 0.05F)
+                        Size = new(part.Size.X * 0.28F, part.Size.Y * 0.28F, part.Size.Z * 0.28F)
                     };
 
-
-                    meshInstance.Mesh = mesh;
 					collisionObject3D.Shape = boxShape3D;
                     AddChild(PartPrefab);
 				}
 			}
 		}  
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
 	}
 }

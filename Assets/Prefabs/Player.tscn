@@ -1,25 +1,83 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3k1qpr62clmb"]
+[gd_scene load_steps=9 format=3 uid="uid://d3k1qpr62clmb"]
 
 [ext_resource type="Script" uid="uid://b36xl5qlq0qb" path="res://Scripts/CharacterBody3d.cs" id="1_yepln"]
+[ext_resource type="ArrayMesh" uid="uid://be2qi8dibu1vw" path="res://Assets/Meshs/Head.obj" id="2_64e7q"]
+[ext_resource type="AudioStream" uid="uid://chcnofrgtamt" path="res://Assets/Sounds/bfsl-minifigfoots1.mp3" id="3_617b0"]
+[ext_resource type="AudioStream" uid="uid://ssc1yxwqbvpa" path="res://Assets/Sounds/swoosh.wav" id="3_qqa3f"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_64e7q"]
-radius = 0.1
-height = 0.6
+[sub_resource type="BoxMesh" id="BoxMesh_yepln"]
+size = Vector3(0.56, 0.56, 0.28)
+subdivide_width = 1
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_617b0"]
-radius = 0.1
-height = 0.6
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_64e7q"]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[sub_resource type="BoxMesh" id="BoxMesh_617b0"]
+material = SubResource("StandardMaterial3D_64e7q")
+size = Vector3(0.28, 0.56, 0.28)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qqa3f"]
+size = Vector3(1.12, 1.4, 0.28)
+
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("JumpingSound", "CameraPivot", "Character", "springArm3D")]
 script = ExtResource("1_yepln")
+JumpingSound = NodePath("Swoosh")
+CameraPivot = NodePath("CameraPivot")
+Character = NodePath("Character")
+springArm3D = NodePath("CameraPivot/SpringArm3D")
+
+[node name="Character" type="Node3D" parent="."]
+
+[node name="Head" type="Node3D" parent="Character"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.4329865, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/Head"]
+mesh = ExtResource("2_64e7q")
+
+[node name="Torso" type="Node3D" parent="Character"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/Torso"]
+mesh = SubResource("BoxMesh_yepln")
+
+[node name="LeftArm" type="Node3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/LeftArm"]
+mesh = SubResource("BoxMesh_617b0")
+
+[node name="RightArm" type="Node3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/RightArm"]
+mesh = SubResource("BoxMesh_617b0")
+
+[node name="LeftLeg" type="Node3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14, -0.56, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/LeftLeg"]
+mesh = SubResource("BoxMesh_617b0")
+
+[node name="RightLeg" type="Node3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14, -0.56, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/RightLeg"]
+mesh = SubResource("BoxMesh_617b0")
 
 [node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9629181, 0.26979384, 0, -0.26979384, 0.9629181, 0, 0.41220605, 0)
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.94551855, 0.32556814, 0, -0.32556814, 0.94551855, 0, 0.72, 1.58)
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+spring_length = 3.0
+margin = 5.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_64e7q")
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.038706064, 1.8623904)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_617b0")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14236265, 0)
+shape = SubResource("BoxShape3D_qqa3f")
+
+[node name="Swoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qqa3f")
+
+[node name="BfslMinifigfoots1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_617b0")

@@ -33,4 +33,4 @@ environment = SubResource("Environment_o4en4")
 [node name="ClientUI" parent="." instance=ExtResource("1_xq4sb")]
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("5_q55al")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.145522, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2700119, 1.4991759, -0.14410734)
