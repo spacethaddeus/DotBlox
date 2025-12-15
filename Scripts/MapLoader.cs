@@ -41,7 +41,7 @@ public partial class MapLoader : Node3D
 
 	public override void _Ready()
 	{
-		RobloxFile map = RobloxFile.Open(@"/Users/tadwalter/Downloads/Classic-Crossroads.rbxlx");
+		RobloxFile map = RobloxFile.Open(@"/Users/tadwalter/Downloads/Roblox - Happy Home in Robloxia.rbxlx");
 
 		Workspace workspace = map.FindFirstChildWhichIsA<Workspace>();
 
@@ -63,6 +63,16 @@ public partial class MapLoader : Node3D
 
 					PartPrefab.Name = part.Name;
 					PartPrefab.Position = new(part.CFrame.Position.X * 0.28F, part.CFrame.Position.Y * 0.28F, part.CFrame.Position.Z * 0.28F);
+
+					Basis basis = new(part.CFrame.XVector.X, 
+					part.CFrame.YVector.X, part.CFrame.ZVector.X, 
+					part.CFrame.XVector.Y, part.CFrame.YVector.Y, 
+					part.CFrame.ZVector.Y, part.CFrame.XVector.Z, 
+					part.CFrame.YVector.Z, part.CFrame.ZVector.Z);
+
+					Godot.Vector3 rotation = basis.GetEuler();
+
+					PartPrefab.Rotation = rotation;
 
 					MeshInstance3D meshInstance = (MeshInstance3D)PartPrefab.GetNode("MeshInstance3D");
 					CollisionShape3D collisionObject3D = (CollisionShape3D)PartPrefab.GetNode("CollisionShape3D");

@@ -43,6 +43,13 @@ public partial class CharacterBody3d : CharacterBody3D
 				CameraPivot.Rotation = rotation;
 			}
 		}
+
+		/*
+		if(@event is InputEventPanGesture gesture)
+		{
+			
+		}
+		*/
     } 
 
     public override void _Process(double delta)
@@ -74,14 +81,22 @@ public partial class CharacterBody3d : CharacterBody3D
 		if (!IsOnFloor())
 		{
 			velocity += GetGravity() * (float)delta;
-			Console.WriteLine(delta);
 		}
 
 		// Handle Jump.
 		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
 		{
+			Random random = new();
 			velocity.Y = JumpVelocity;
-			JumpingSound.Play();
+
+			if(random.Next(0, 5) == 3)
+			{
+				RandomJumpSound1.Play();
+			}
+			else
+			{
+				JumpingSound.Play();
+			}
 		}
 
 		// Get the input direction and handle the movement/deceleration.
