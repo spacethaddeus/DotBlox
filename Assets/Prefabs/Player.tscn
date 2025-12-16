@@ -29,40 +29,44 @@ springArm3D = NodePath("CameraPivot/SpringArm3D")
 
 [node name="Character" type="Node3D" parent="."]
 
-[node name="Head" type="Node3D" parent="Character"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Character"]
+
+[node name="Head" type="Node3D" parent="Character/Skeleton3D"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.4329865, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/Head"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/Skeleton3D/Head"]
 mesh = ExtResource("2_64e7q")
 
-[node name="Torso" type="Node3D" parent="Character"]
+[node name="Torso" type="Node3D" parent="Character/Skeleton3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/Torso"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/Skeleton3D/Torso"]
 mesh = SubResource("BoxMesh_yepln")
 
-[node name="LeftArm" type="Node3D" parent="Character"]
+[node name="LeftArm" type="Node3D" parent="Character/Skeleton3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/LeftArm"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/Skeleton3D/LeftArm"]
 mesh = SubResource("BoxMesh_617b0")
 
-[node name="RightArm" type="Node3D" parent="Character"]
+[node name="RightArm" type="Node3D" parent="Character/Skeleton3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/RightArm"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/Skeleton3D/RightArm"]
 mesh = SubResource("BoxMesh_617b0")
 
-[node name="LeftLeg" type="Node3D" parent="Character"]
+[node name="LeftLeg" type="Node3D" parent="Character/Skeleton3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14, -0.56, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/LeftLeg"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/Skeleton3D/LeftLeg"]
 mesh = SubResource("BoxMesh_617b0")
 
-[node name="RightLeg" type="Node3D" parent="Character"]
+[node name="RightLeg" type="Node3D" parent="Character/Skeleton3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14, -0.56, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/RightLeg"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/Skeleton3D/RightLeg"]
 mesh = SubResource("BoxMesh_617b0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
 
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9629181, 0.26979384, 0, -0.26979384, 0.9629181, 0, 0.41220605, 0)

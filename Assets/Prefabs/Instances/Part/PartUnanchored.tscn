@@ -10,7 +10,7 @@ size = Vector3(0.1, 0.05, 0.15)
 size = Vector3(0.1, 0.05, 0.15)
 
 [node name="RigidBody3D" type="RigidBody3D"]
-mass = 22.0
+mass = 24.0
 gravity_scale = 0.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

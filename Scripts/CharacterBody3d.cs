@@ -16,6 +16,7 @@ public partial class CharacterBody3d : CharacterBody3D
 	SpringArm3D springArm3D;
 
 	Vector2 CameraInputDirection;
+	Vector3 PrevPosition;
 
 	public const float Speed = 5.0f;
 	public const float JumpVelocity = 6f;
@@ -63,11 +64,11 @@ public partial class CharacterBody3d : CharacterBody3D
 			MouseDown = false;
 		}
 
-        if(Input.IsActionPressed("ui_left"))
+        if(Input.IsActionPressed("ui_left") && !MouseDown)
 		{
 			CameraPivot.RotateY(1F * (float)delta);
 		}
-		if(Input.IsActionPressed("ui_right"))
+		if(Input.IsActionPressed("ui_right") && !MouseDown)
 		{
 			CameraPivot.RotateY(-1F * (float)delta);
 		}
@@ -115,7 +116,13 @@ public partial class CharacterBody3d : CharacterBody3D
 		}
 
 		Velocity = velocity;
-		Character.LookAt(GlobalPosition + direction);
+		if(PrevPosition != Position)
+		{
+			Character.LookAt(GlobalPosition + direction);
+		}
+
+		PrevPosition = Position;
+		
 		MoveAndSlide();
 	}
 }
